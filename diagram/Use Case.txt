@@ -1,0 +1,33 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+
+actor "Пользователь" as User
+actor "Облако" as Cloud
+
+rectangle "Система заметок" {
+
+    usecase "Просмотр всех заметок" as viewNotes
+    usecase "Поиск заметок" as searchNotes
+    usecase "Фильтр по категориям" as filterNotes
+    usecase "Создать заметку" as createNote
+    usecase "Выбрать категорию" as chooseCategory
+    usecase "Поделиться заметкой" as shareNote
+    usecase "Сохранить заметку" as saveNote
+    usecase "Авто-синхронизация\n(если есть интернет)" as syncCloud
+
+}
+
+User --> viewNotes
+User --> searchNotes
+User --> filterNotes
+User --> createNote
+User --> chooseCategory
+User --> shareNote
+User --> saveNote
+
+saveNote --> syncCloud
+syncCloud --> Cloud
+
+@enduml
